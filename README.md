@@ -78,10 +78,14 @@ Example 50mV undervolt:
 ### Setting the voltages
 You need to be able to write to MSR registers. The easiest way is to use `wrmsr` from `msr-tools` Check with your distro to see how to get it. These settings reset on reboot or S3 sleep, so if you set the voltage too low and crash, it resets. To keep the undervolt after sleep you must create a script that runs after resume.
 
-Example usage (-50mV undervolt of the CPU Core plane)
+Example usage (-50mV undervolt of the CPU Core plane):
+
 `wrmsr 0x150 0x80000011F9C00000`
+
 Explanation:
+
 `0x150` is the MSR register, `0x80000011F9C00000` is the value we are setting it to.
+
 The value can be deconstructed to 5 parts:
 
 | constant | plane index | constant | write/read | offset     |
