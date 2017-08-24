@@ -36,6 +36,7 @@ FIVRVoltage13=0xF0000000
 ```
 
 The first number after `FIVRVoltage` is the index of the voltage plane and they correspond to the order in which they are displayed in Throttlestop. On my machine the order is as follows:
+
 0 - CPU Core
 
 1 - Intel GPU
