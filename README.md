@@ -68,6 +68,7 @@ From this it appears that the offset has 0.5 mV increments.
 To calculate the values, use a "programmers calculator" and type in the negative double of the offset in mV and then take the last three characters.
 
 Example 50mV undervolt:
+
 1. First double the number to get `-100`
 2. Convert to HEX and get ‭`0xFFFFFFFFFFFFFF9C‬`
 3. Take the last 12 bits (last three characters) and get `0xF9C`
@@ -81,6 +82,7 @@ Example usage (-50mV undervolt of the CPU Core plane)
 Explanation:
 `0x150` is the MSR register, `0x80000011F9C00000` is the value we are setting it to.
 The value can be deconstructed to 5 parts:
+
 | constant | plane index | constant | write/read | offset     |
 |----------|-------------|----------|------------|------------|
 | `80000`  | `0`         | `1`      | `1`        | `F9C00000` |
