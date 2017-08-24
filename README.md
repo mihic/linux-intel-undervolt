@@ -66,7 +66,7 @@ At this point I would like to remind you that this is reverse engineering / gues
 The offset I got from Throttlestop for the CPU Core for my  -150.4 mV offset is `0xECC00000`. My GPU has an offset of -125.0 mV and a HEX offset of `0xF0000000`.
 The HEX value is actually a 12 bit number (first 3 characters, each hex character is 4 bits). `0xECC` is -308 and `0xF00` is -256.
 From this it appears that the offset has 0.5 mV increments.
-To calculate the values, use a "programmers calculator" and type in the negative double of the offset in mV and then take the last three characters.
+To calculate the values, use a "programmers calculator" and type in the negative double of the offset in mV and then take the last three characters of the hex value.
 
 Example 50mV undervolt:
 
