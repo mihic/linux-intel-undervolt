@@ -105,7 +105,7 @@ wrmsr 0x150 0x80000311ecc00000
 wrmsr 0x150 0x80000411ecc00000 
 ```
 
-###Reading from the OC mailbox
+### Reading from the OC mailbox
 To read (and check if you set the voltages correctly) you must first write to `0x150` and then read it again.
 Set the plane index to the plane you want to read, write/read to 0 and offset to 0.
 
