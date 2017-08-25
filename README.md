@@ -65,32 +65,36 @@ At this point I would like to remind you that this is reverse engineering / gues
 
 The offset I got from Throttlestop for the CPU Core for my  -150.4 mV offset is `0xECC00000`. My GPU has an offset of -125.0 mV and a HEX offset of `0xF0000000`.
 The HEX value is actually a 12 bit number (first 3 characters, each hex character is 4 bits). `0xECC` is -308 and `0xF00` is -256.
-From this it appears that the offset has 0.5 mV increments.
-To calculate the values, use a "programmers calculator" and type in the negative double of the offset in mV and then take the last three characters of the hex value.
+The offset has about 0.5 mV increments. 
+
+To calculate the actual offset you multiply the offset in mV with -2.048, round to the nearest integer, then take the 12 least significant bits (or last three charcters in hex). 
 
 Example 50mV undervolt:
 
-1. First double the number to get `-100`
-2. Convert to HEX and get ‭`0xFFFFFFFFFFFFFF9C‬`
-3. Take the last 12 bits (last three characters) and get `0xF9C`
-4. Pad with zeros to get the right format `0xF9C00000`
+1. First multiply 50 by 2.08 to get `-102.4`
+2. Round to `-102`
+3. Convert to HEX and get ‭`‭FFFFFFFFFFFFFF9A‬‬`
+4. Take the last 12 bits (last three characters) and get `0xF9A`
+5. Pad with zeros to get the right format `0xF9A00000`
+
+Since we rounded in step 2, the actual offset is 49,8 mV. 
 
 ### Setting the voltages
 You need to be able to write to MSR registers. The easiest way is to use `wrmsr` from `msr-tools` Check with your distro to see how to get it. These settings reset on reboot or S3 sleep, so if you set the voltage too low and crash, it resets. To keep the undervolt after sleep you must create a script that runs after resume.
 
 Example usage (-50mV undervolt of the CPU Core plane):
 
-`wrmsr 0x150 0x80000011F9C00000`
+`wrmsr 0x150 0x80000011F9A00000`
 
 Explanation:
 
-`0x150` is the MSR register, `0x80000011F9C00000` is the value we are setting it to.
+`0x150` is the MSR register, `0x80000011F9A00000` is the value we are setting it to.
 
 The value can be deconstructed to 5 parts:
 
 | constant | plane index | constant | write/read | offset     |
 |----------|-------------|----------|------------|------------|
-| `80000`  | `0`         | `1`      | `1`        | `F9C00000` |
+| `80000`  | `0`         | `1`      | `1`        | `F9A00000` |
 
 I do not know what the constants mean, you only need to change the plane index and offset.
 
