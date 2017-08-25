@@ -51,10 +51,10 @@ The first number after `FIVRVoltage` is the index of the voltage plane and they 
 
 On my machine index 5 is greyed out in Throttlestop, so I have not played with it.
 For more information about these planes, check out the Throttlestop guide thread (linked in the beginning). There are some limitations that are model specific, like CPU Core and Cache sharing the voltage plane, meaning that only the higher voltage of the two settings is applied, again the Throttlestop thread is right now the best reference for this.
--
+
 The second number after `FIVRVoltage` is another index which I don't really know what it means. Right now my *.ini* has all three set to the same value, but changing the slider only the voltage at index *_2* changes. My guess is this is some feature of Throttlestop, that stores old values that get restored in case of a crash.
 
-4If you are unsure, you can always change the slider in Throttlestop, save the configuration, look at the *.ini* and figure out the correct values.
+If you are unsure, you can always change the slider in Throttlestop, save the configuration, look at the *.ini* and figure out the correct values.
 
 You should now have a hex value for each of the voltage planes. You can skip the next section (or go along and check the numbers).
 
