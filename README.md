@@ -54,7 +54,7 @@ For more information about these planes, check out the Throttlestop guide thread
 
 The second number after `FIVRVoltage` is another index which I don't really know what it means. Right now my *.ini* has all three set to the same value, but changing the slider only the voltage at index *_2* changes. My guess is this is some feature of Throttlestop, that stores old values that get restored in case of a crash.
 
-If you are unsure, you can always change the slider in Throttlestop, save the configuration, look at the *.ini* and figure out the correct values.
+4If you are unsure, you can always change the slider in Throttlestop, save the configuration, look at the *.ini* and figure out the correct values.
 
 You should now have a hex value for each of the voltage planes. You can skip the next section (or go along and check the numbers).
 
@@ -71,7 +71,7 @@ To calculate the actual offset you multiply the offset in mV with -2.048, round 
 
 Example 50mV undervolt:
 
-1. First multiply 50 by 2.08 to get `-102.4`
+1. First multiply 50 by 2.048 and get `-102.4`
 2. Round to `-102`
 3. Convert to HEX and get ‭`‭FFFFFFFFFFFFFF9A‬‬`
 4. Take the last 12 bits (last three characters) and get `0xF9A`
