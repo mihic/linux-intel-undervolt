@@ -64,20 +64,22 @@ If you skipped the windows section, please read it anyway as there is informatio
 At this point I would like to remind you that this is reverse engineering / guess work. Since I only have one machine that is new enough for this, I have no way to check if the same principles work on other CPUs. It is possible that the actual offsets and plane indexes are different across CPUs (especially across generations of cpus). 
 
 The offset I got from Throttlestop for the CPU Core for my  -150.4 mV offset is `0xECC00000`. My GPU has an offset of -125.0 mV and a HEX offset of `0xF0000000`.
-The HEX value is actually a 12 bit number (first 3 characters, each hex character is 4 bits). `0xECC` is -308 and `0xF00` is -256.
-The offset has about 0.5 mV increments. 
+The HEX value is actually a 11 bit number. One step is 1/1024 V (about 1mV).
 
-To calculate the actual offset you multiply the offset in mV with -2.048, round to the nearest integer, then take the 12 least significant bits (or last three charcters in hex). 
+To calculate the actual offset you multiply the offset in mV with 1.048, round to the nearest integer, then shift left until you have only 11 bits of the original number.
 
 Example 50mV undervolt:
 
-1. First multiply 50 by -2.048 and get `-102.4`
-2. Round to `-102`
-3. Convert to HEX and get ‭`‭FFFFFFFFFFFFFF9A‬‬`
-4. Take the last 12 bits (last three characters) and get `0xF9A`
-5. Pad with zeros to get the right format `0xF9A00000`
+1. First multiply -50 by 1.024 and get `-51.2`
+2. Round to `-51`
+3. Convert to HEX and get ‭`0x‭‭FFFFFFCD‬‬‬‬`
+4. Shift left by 21 and get `‭0xF9A00000‬`
 
-Since we rounded in step 2, the actual offset is 49,8 mV. 
+You can also use this python one-liner to calculate the offset for you:
+
+`hex((round(mv*1.024)<<21)+16**8)`
+
+
 
 ### Setting the voltages
 You need to be able to write to MSR registers. The easiest way is to use `wrmsr` from `msr-tools` Check with your distro to see how to get it. These settings reset on reboot or S3 sleep, so if you set the voltage too low and crash, it resets. To keep the undervolt after sleep you must create a script that runs after resume.
