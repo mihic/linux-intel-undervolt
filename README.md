@@ -77,7 +77,7 @@ Example 50mV undervolt:
 
 You can also use this python one-liner to calculate the offset for you:
 
-`hex((round(mv*1.024)<<21)+16**8)`
+`format(round(mv*1.024)<<21, '08x') if (round(mv*1.024)<<21)>0 else format((round(mv*1.024)<<21)+16**8, '08x')`
 
 
 
