@@ -5,7 +5,7 @@ Guide to linux undervolting for Haswell and never Intel CPUs
 
 I am not responsible for any damage you do by following the instructions found here. There is no official documentation about the MSR interface used, everything was reverse engineered by watching [Throttlestop](http://forum.notebookreview.com/threads/the-throttlestop-guide.531329) system calls and trial and error.
 
-This is applicable to all Intel CPUs with an integrated voltage controller (FIVR). In general this includes all mobile Haswell and newer CPUs. I only tested this on one machine, a laptop with a i7-6700HQ.
+This is applicable to all Intel CPUs with an integrated voltage controller (FIVR). In general this includes all mobile CPUs since Haswell. I only tested this on one machine, a laptop with a i7-6700HQ.
 
 
 ## HOW TO
