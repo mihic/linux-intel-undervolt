@@ -1,5 +1,5 @@
 # linux-intel-undervolt
-Guide to linux undervolting for Haswell and never Intel CPUs
+Guide to linux undervolting for Haswell and newer Intel CPUs
 
 ## Disclaimers
 
