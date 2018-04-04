@@ -7,9 +7,17 @@ I am not responsible for any damage you do by following the instructions found h
 
 This is applicable to all Intel CPUs with an integrated voltage controller (FIVR). In general this includes all mobile CPUs since Haswell. I only tested this on one machine, a laptop with a i7-6700HQ.
 
+## Using a utility
+Other people made utilities you can use instead of following this guide manually:
+
+https://github.com/georgewhewell/undervolt
+
+https://github.com/tiziw/iuvolt
+
+https://github.com/kitsunyan/intel-undervolt
+
 
 ## HOW TO
-__TODO__ : write an undervolting guide (for now just a guide for people who already know about undervolting)
 
 ### Finding voltage offsets
 
